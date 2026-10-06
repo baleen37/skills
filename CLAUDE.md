@@ -6,7 +6,8 @@
 
 skills - AI 코딩 어시스턴트 툴킷 (Claude Code, Codex)
 
-AI 보조 개발을 위한 도구들을 제공하며, 반복적 자기 참조 AI 개발 루프(Ralph Loop), Git 워크플로우 보호, 개인용 개발 워크플로우 자동화 등의 기능을 포함합니다.
+AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호, 개발 워크플로우 스킬(core, superpower),
+외부 서비스 연동(atlassian, datadog), 자율 실험 루프(autoresearch) 등의 기능을 포함합니다.
 
 ## Key Files
 
@@ -24,12 +25,12 @@ AI 보조 개발을 위한 도구들을 제공하며, 반복적 자기 참조 AI
 
 | Directory | Purpose |
 | --------- | ------- |
-| `plugins/` | Plugin sources, one subdirectory per plugin (`core`, `slack`, `notion`, `datadog`, `autoresearch`); each holds its own `agents/`, `hooks/`, `skills/`, and `.claude-plugin/plugin.json` |
-| `scripts/` | Utility scripts (handoff, conflict checks, PR verification) |
+| `plugins/` | Plugin sources, one subdirectory per plugin (`atlassian`, `autoresearch`, `core`, `datadog`, `superpower`, `wiki`); each holds `skills/`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` (`core` also has `agents/` and `hooks/`) |
+| `scripts/` | Maintenance scripts (Codex artifact sync/check, marketplace version sync, agent CLI pin updates, dispatch, harness audit) |
 | `.claude-plugin/` | Marketplace configuration (`marketplace.json`) listing all plugins |
-| `.github/` | GitHub Actions workflows and custom actions (see `.github/AGENTS.md`) |
-| `tests/` | BATS test suites (see `tests/AGENTS.md`) |
-| `docs/` | Development and testing documentation (see `docs/AGENTS.md`) |
+| `.github/` | GitHub Actions workflows and custom actions |
+| `tests/` | BATS test suites (entry point: `tests/run-all-tests.sh`) |
+| `docs/` | Development and testing documentation, design specs and plans |
 | `.claude/` | Claude Code session data |
 
 ## For AI Agents
@@ -54,12 +55,12 @@ AI 보조 개발을 위한 도구들을 제공하며, 반복적 자기 참조 AI
 - Always run `bun install` after modifying package.json
 - Use Conventional Commits format: `type(scope): description`
 - Use `bun run commit` for interactive commit creation (works via Bun's npm compatibility)
-- Never bypass pre-commit hooks with `--no-verify` (blocked by git-guard)
+- Never bypass pre-commit hooks with `--no-verify` (blocked by `plugins/core/hooks/commit-guard.sh`)
 - Follow semantic-release workflow for version management
 
 ### Testing Requirements
 
-- Run `bats tests/` before committing
+- Run `bun run test` before committing (runs every BATS suite via `tests/run-all-tests.sh`)
 - Ensure all pre-commit hooks pass: `pre-commit run --all-files`
 
 ### Common Patterns
@@ -86,7 +87,6 @@ AI 보조 개발을 위한 도구들을 제공하며, 반복적 자기 참조 AI
 - **husky** - Git hooks management
 - **pre-commit** - Pre-commit hooks framework (Python-based)
 - **BATS** - Bash Automated Testing System
-- **Nix** (optional) - Reproducible development environment
 
 ### Development Tools
 
