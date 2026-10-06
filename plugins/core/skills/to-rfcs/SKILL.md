@@ -1,5 +1,5 @@
 ---
-name: writing-rfcs
+name: to-rfcs
 description: >-
   Use when writing, reviewing, or improving RFCs, requests for comments,
   technical design docs, architecture proposals, engineering decision records,

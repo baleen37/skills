@@ -1,7 +1,7 @@
 # core plugin
 
 Install `core` for development tools shared by Claude Code and Codex.
-It contains 23 skills: TDD and debugging, verification, review, PR creation,
+It contains 31 skills: TDD and debugging, verification, review, PR creation,
 deployment, and independent engineering tools. Planning and execution flows
 live in the separate `superpower` plugin.
 
@@ -13,7 +13,8 @@ live in the separate `superpower` plugin.
 
 | Stage | Artifact | Skills |
 | --- | --- | --- |
-| Shape the idea | `GLOSSARY.md`, ADRs, prototypes, research notes | `domain-modeling`, `prototype`, `research` |
+| Shape the idea | `GLOSSARY.md`, ADRs, prototypes, research notes | `grill-with-docs`, `grill-me`, `grilling`, `domain-modeling`, `prototype`, `research` |
+| Plan and track | map, spec, and tickets in the configured tracker (run `setup` once per repo) | `wayfinder`, `to-spec`, `to-tickets`, `triage`, `setup` |
 | Build | code | `tdd` |
 | Verify | real behavior and test evidence | `verify`, `e2e-scenario-testing`, `diagnosing-bugs` |
 | Review | findings and cleanups | `code-review`, `simplify` |
@@ -24,7 +25,7 @@ live in the separate `superpower` plugin.
 | Area | Skills |
 | --- | --- |
 | Codebase vocabulary and upkeep | `codebase-design`, `improve-codebase-architecture`, `writing-for-agents` |
-| Communication | `to-questionnaire`, `wait-what`, `writing-rfcs` |
+| Communication | `to-questionnaire`, `wait-what`, `to-rfcs` |
 | Session continuity | `handoff` carries context; `retro` improves the environment |
 | Learning and interfaces | `learn` (workspace: `~/.skills/learn/<topic>/`), `browser`, `wizard` |
 | Design alternatives | `competitive-agents` |

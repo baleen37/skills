@@ -38,7 +38,7 @@ bun run sync:codex
 
 | Plugin | Purpose |
 | --- | --- |
-| `core` | TDD, debugging, verification, review, PRs, shipping, and engineering tools (23 skills) |
+| `core` | TDD, debugging, verification, review, PRs, shipping, and engineering tools (31 skills) |
 | `superpower` | obra/superpowers workflow: brainstorming, plans, subagent-driven execution, code review (12 skills) |
 | `slack` | Slack message, thread, channel, and user search |
 | `atlassian` | Jira work guidance through `twg` |
