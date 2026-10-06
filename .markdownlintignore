@@ -13,3 +13,6 @@ plugins/core/skills/
 
 # Mirrored upstream skill bodies — kept verbatim from obra/superpowers
 plugins/superpower/skills/
+
+# Eval prompts and grader rubrics — verbatim model inputs; rewrapping changes what was measured
+plugins/*/evals/
