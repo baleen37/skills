@@ -9,8 +9,6 @@ description: Use when about to claim work is complete, fixed, or passing, before
 
 **Core principle:** Evidence before claims, always.
 
-**Violating the letter of this rule is violating the spirit of this rule.**
-
 ## The Iron Law
 
 ```
@@ -31,8 +29,6 @@ BEFORE claiming any status or expressing satisfaction:
    - If NO: State actual status with evidence
    - If YES: State claim WITH evidence
 5. ONLY THEN: Make the claim
-
-Skip any step = lying, not verifying
 ```
 
 ## Common Failures

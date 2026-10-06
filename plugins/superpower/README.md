@@ -16,6 +16,8 @@ This plugin packages obra's Superpowers skills under the `superpower` name.
   - `executing-plans` runs its helper scripts through `bash`.
   - `brainstorming/scripts/server.cjs` never loads the remote brand logo.
   - `subagent-driven-development/scripts/sdd-workspace` uses `CDPATH=''` (ShellCheck).
+- Prompt-audit edits for current Claude models (pressure language and numeric caps removed):
+  `using-superpower`, `verification-before-completion`, `subagent-driven-development/implementer-prompt.md`.
 
 `test-driven-development` and `systematic-debugging` are not packaged because
 they overlap with Matt Pocock's skills in `core`; references to them point to
