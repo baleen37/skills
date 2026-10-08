@@ -1,0 +1,5 @@
+interface:
+  display_name: "Jira 잔여 이슈를 TODO에 기록"
+  short_description: "내 Jira 미완료 이슈를 오늘 Daily 노트에 추가합니다"
+policy:
+  allow_implicit_invocation: false
