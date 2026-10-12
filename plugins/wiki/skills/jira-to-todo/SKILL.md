@@ -44,6 +44,9 @@ Jira에서 내 미완료 이슈를 읽어 오늘 Daily 노트의 `# TODO` 섹션
 - [ ] {상위 이슈 요약} — [KEY-2](https://{사이트}/browse/KEY-2)
     - [ ] {하위 이슈 요약} (In Progress) — [KEY-3](https://{사이트}/browse/KEY-3)
     - [ ] {하위 이슈 요약} — [KEY-4](https://{사이트}/browse/KEY-4)
+- [ ] {하위 이슈가 없는 상위 이슈 요약} — [KEY-5](https://{사이트}/browse/KEY-5)
+    - [x] {본문 TODO·코멘트에서 읽은 완료 단계}
+    - [ ] {본문 TODO·코멘트에서 읽은 남은 단계}
 ```
 
 - 요약은 Jira 제목을 짧게 줄여도 됩니다.
