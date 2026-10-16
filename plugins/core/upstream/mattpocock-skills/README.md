@@ -3,7 +3,7 @@
 This plugin packages the skills exposed by Matt Pocock's official plugin.
 
 - Upstream: <https://github.com/mattpocock/skills>
-- Snapshot: `d81f3a1` (2026-09-29)
+- Snapshot: `49dd158` (2026-10-09)
 - The skill list matches upstream `.claude-plugin/plugin.json`, except
   `code-review`: bstack keeps `core:code-review`, and upstream references to
   `code-review` resolve to it.
