@@ -1,7 +1,7 @@
 # core plugin
 
 Install `core` for development tools shared by Claude Code and Codex.
-It contains 31 skills: TDD and debugging, verification, review, PR creation,
+It contains 33 skills: TDD and debugging, verification, review, PR creation,
 deployment, and independent engineering tools. Planning and execution flows
 live in the separate `superpower` plugin.
 
@@ -29,6 +29,7 @@ live in the separate `superpower` plugin.
 | Session continuity | `handoff` carries context; `retro` improves the environment |
 | Learning and interfaces | `learn` (workspace: `~/.skills/learn/<topic>/`), `browser`, `wizard` |
 | Design alternatives | `competitive-agents` |
+| LLM app evals | `build-eval` builds a trusted eval; `hillclimb` improves the app against it |
 
 ## Agents and hooks
 

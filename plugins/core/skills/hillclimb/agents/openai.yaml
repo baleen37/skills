@@ -1,0 +1,3 @@
+interface:
+  display_name: "Hillclimb"
+  short_description: "Improve an LLM app against an eval"
