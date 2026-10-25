@@ -33,7 +33,7 @@ jobs:
 
       # Same pinned versions as ci.yml so the validator tests run here instead of skipping.
       - name: Install Claude Code and Codex CLIs
-        run: npm install -g @anthropic-ai/claude-code@2.1.301 @openai/codex@0.163.0
+        run: npm install -g @anthropic-ai/claude-code@2.1.309 @openai/codex@0.163.0
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
