@@ -18,7 +18,7 @@ Jira를 읽어 오늘 Daily 노트의 `# TODO` 섹션을 최신으로 맞춥니�
 
 ## 노트 확인
 
-- 사용자의 현지 날짜를 확인하고 `~/wiki/Journal/Daily/YYYY-MM-DD.md` 노트를 엽니다.
+- 사용자의 현지 날짜를 확인하고 `~/wiki/000_JOURNAL/Daily/YYYY-MM-DD.md` 노트를 엽니다.
 - Daily 노트가 없거나 정확히 `# TODO`인 제목이 없으면 사용자에게 알리고 멈춥니다. Daily 노트나 섹션을 새로 만들지 않습니다.
 - Jira 연동 도구(예: Atlassian MCP)가 없으면 연결이 필요하다고 알리고 멈춥니다.
 - 노트 전체에서 Jira 키를 모읍니다. Jira 링크·URL(`/browse/ABC-123`) 속 키는 항상 키로 봅니다.

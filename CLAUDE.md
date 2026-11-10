@@ -25,7 +25,7 @@ AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호
 
 | Directory | Purpose |
 | --------- | ------- |
-| `plugins/` | Plugin sources, one subdirectory per plugin (`atlassian`, `autoresearch`, `core`, `datadog`, `superpower`, `wiki`); each holds `skills/`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` (`core` also has `agents/` and `hooks/`) |
+| `plugins/` | Plugin sources, one subdirectory per plugin (`atlassian`, `autoresearch`, `core`, `datadog`, `superpower`); each holds `skills/`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` (`core` also has `agents/` and `hooks/`) |
 | `scripts/` | Maintenance scripts (Codex artifact sync/check, marketplace version sync, agent CLI pin updates, dispatch, harness audit) |
 | `.claude-plugin/` | Marketplace configuration (`marketplace.json`) listing all plugins |
 | `.github/` | GitHub Actions workflows and custom actions |
