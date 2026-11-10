@@ -37,20 +37,6 @@
       "version": "17.72.3"
     },
     {
-      "name": "wiki",
-      "description": "Obsidian 위키의 Inbox와 Daily TODO 기록 스킬",
-      "source": "./plugins/wiki",
-      "category": "development",
-      "tags": [
-        "obsidian",
-        "wiki",
-        "inbox",
-        "daily",
-        "todo"
-      ],
-      "version": "17.72.3"
-    },
-    {
       "name": "datadog",
       "description": "Datadog observability guidance via the pup CLI",
       "source": "./plugins/datadog",
