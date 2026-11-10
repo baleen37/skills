@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 사용자가 지정한 할 일을 오늘 Daily 노트의 `# TODO` 섹션에 추가합니다.
 
-- 사용자의 현지 날짜를 확인하고 `~/wiki/Journal/Daily/YYYY-MM-DD.md` 노트를 엽니다.
+- 사용자의 현지 날짜를 확인하고 `~/wiki/000_JOURNAL/Daily/YYYY-MM-DD.md` 노트를 엽니다.
 - Daily 노트가 없거나 정확히 `# TODO`인 제목이 없으면 사용자에게 알리고 멈춥니다. Daily 노트나 섹션을 새로 만들지 않습니다.
 - 할 일이 구체적으로 전달되지 않았다면 먼저 내용을 물어보고 파일을 수정하지 않습니다.
 
