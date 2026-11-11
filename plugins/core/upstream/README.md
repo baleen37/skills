@@ -6,16 +6,16 @@ instructions. Upstream URLs and license notices remain unchanged.
 
 | Source | Snapshot | Preserved notices |
 | --- | --- | --- |
-| [mattpocock/skills](https://github.com/mattpocock/skills/tree/d81f3a1) | `d81f3a1` (2026-09-29) | [README](mattpocock-skills/README.md), [metadata](mattpocock-skills/metadata.json), [MIT license](mattpocock-skills/LICENSE) |
+| [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317) | `4ae2317` (2026-10-31) | [README](mattpocock-skills/README.md), [metadata](mattpocock-skills/metadata.json), [MIT license](mattpocock-skills/LICENSE) |
 
 ## Local adaptations
 
 All distributed skills live in `../skills/` and use the `core:` namespace.
 Upstream `/skill` invocations are rewritten to `core:skill`.
 
-Matt's flow skills are not packaged: `ask-matt`, `implement`, and
-`implement-spec`. Renamed skills:
+Matt's `implement-spec` flow skill is not packaged. Renamed skills:
 
+- `ask-matt` → `ask` (routes only to skills packaged in `core`)
 - `setup-matt-pocock-skills` → `setup`
 
 - `teach` → `learn` (workspace under `~/.skills/learn/<topic>/`)
