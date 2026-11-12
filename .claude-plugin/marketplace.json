@@ -22,7 +22,7 @@
         "memory",
         "context"
       ],
-      "version": "17.74.0"
+      "version": "17.75.0"
     },
     {
       "name": "superpower",
@@ -34,7 +34,7 @@
         "collaboration",
         "workflows"
       ],
-      "version": "17.74.0"
+      "version": "17.75.0"
     },
     {
       "name": "datadog",
@@ -49,7 +49,7 @@
         "apm",
         "pup"
       ],
-      "version": "17.74.0"
+      "version": "17.75.0"
     },
     {
       "name": "autoresearch",
@@ -62,7 +62,7 @@
         "autonomous",
         "research"
       ],
-      "version": "17.74.0"
+      "version": "17.75.0"
     },
     {
       "name": "atlassian",
@@ -75,7 +75,7 @@
         "twg",
         "cli"
       ],
-      "version": "17.74.0"
+      "version": "17.75.0"
     }
   ]
 }
