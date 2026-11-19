@@ -5,12 +5,12 @@ description: Answer a question from the LLM wiki with citations to its pages, an
 
 # Search the wiki
 
-The wiki is `~/wiki/004_RESOURCE/LLM Wiki/`.
+The wiki is `~/wiki/llm_wiki/`.
 
 ## Steps
 
-1. **Open the wiki.** If `~/wiki/004_RESOURCE/LLM Wiki/index.md` is missing, tell the user to create the wiki with
-   `wiki:init`. Read `~/wiki/004_RESOURCE/LLM Wiki/AGENTS.md`: its conventions override this skill.
+1. **Open the wiki.** If `~/wiki/llm_wiki/index.md` is missing, tell the user to create the wiki with
+   `wiki:init`. Read `~/wiki/llm_wiki/AGENTS.md`: its conventions override this skill.
 2. **Locate pages.** Read `index.md` and pick the candidate pages; grep the wiki folder for terms the index misses. If
    the schema names a search tool (e.g. `qmd`), use it.
 3. **Read and follow links.** Read each candidate, following `[[wikilinks]]` one hop where they bear on the question,
