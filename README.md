@@ -21,6 +21,20 @@ claude plugin marketplace add https://github.com/baleen37/skills
 claude plugin install core@skills
 ```
 
+## OpenCode
+
+OpenCode 2.x installs the repository as a plugin that registers the `core` and
+`wiki` skills with its native `skill` tool. Claude Code hooks and agents are not
+loaded.
+
+```bash
+opencode plugin add skills@git+https://github.com/baleen37/skills.git
+```
+
+The entrypoint is `index.js`. Keep `package.json` free of `prepare`, `build`,
+`prepack`, and `(pre|post)install` scripts: they make the Git install run a
+preparation step that fails inside OpenCode.
+
 ## Codex Compatibility
 
 This repository treats Claude Code metadata as the source of truth and generates Codex artifacts from it.

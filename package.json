@@ -5,9 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare": "husky",
     "commit": "git-cz",
-    "build": "echo 'No modules to build'",
     "test": "bash tests/run-all-tests.sh",
     "test:bats": "bash tests/run-all-tests.sh",
     "sync:codex": "bash scripts/sync-codex-artifacts.sh",
@@ -20,7 +18,6 @@
     "@semantic-release/github": "^12.0.6",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^9.1.7",
     "semantic-release": "^21.0.7"
   },
   "config": {
