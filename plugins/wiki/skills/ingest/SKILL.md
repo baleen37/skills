@@ -5,14 +5,14 @@ description: Ingest a source into the LLM wiki — summarize it, then integrate 
 
 # Ingest a source
 
-The wiki is `~/wiki/004_RESOURCE/LLM Wiki/`; external sources live in `~/wiki/004_RESOURCE/raw/`.
+The wiki is `~/wiki/llm_wiki/`; external sources live in its `raw/` folder.
 
 ## Steps
 
-1. **Open the wiki.** If `~/wiki/004_RESOURCE/LLM Wiki/index.md` is missing, tell the user to create the wiki with
-   `wiki:init`. Read `~/wiki/004_RESOURCE/LLM Wiki/AGENTS.md`: its conventions override this skill.
+1. **Open the wiki.** If `~/wiki/llm_wiki/index.md` is missing, tell the user to create the wiki with
+   `wiki:init`. Read `~/wiki/llm_wiki/AGENTS.md`: its conventions override this skill.
 2. **Place the source.** An external source (a URL, pasted text, a file outside the vault) is saved as markdown into
-   `004_RESOURCE/raw/`, images into `~/wiki/Attachments/`. A note already in the vault stays where it is, untouched.
+   `llm_wiki/raw/`, images into `~/wiki/Attachments/`. A note already in the vault stays where it is, untouched.
    Done when the source has a vault path.
 3. **Read and discuss.** Read the source in full (text first, then any referenced images). Share the key takeaways with
    the user and ask what to emphasize, unless the schema sets batch ingest.
