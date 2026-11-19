@@ -10,7 +10,7 @@ The wiki is `~/wiki/llm_wiki/`; external sources live in its `raw/` folder.
 ## Steps
 
 1. **Open the wiki.** If `~/wiki/llm_wiki/index.md` is missing, tell the user to create the wiki with
-   `wiki:init`. Read `~/wiki/llm_wiki/AGENTS.md`: its conventions override this skill.
+   `wiki:init`. Read `~/wiki/llm_wiki/CLAUDE.md`: its conventions override this skill.
 2. **Place the source.** An external source (a URL, pasted text, a file outside the vault) is saved as markdown into
    `llm_wiki/raw/`, images into `~/wiki/Attachments/`. A note already in the vault stays where it is, untouched.
    Done when the source has a vault path.
