@@ -23,21 +23,20 @@ wiki follows them and leaves every vault file outside `llm_wiki/` untouched, apa
 
    ```text
    ~/wiki/llm_wiki/
-     AGENTS.md        # the schema: single source of truth for every wiki skill
-     CLAUDE.md        # one line: @AGENTS.md
+     CLAUDE.md        # the schema: single source of truth for every wiki skill
      index.md         # catalog: one line per page, grouped by category
      log.md           # append-only timeline
      raw/             # immutable external sources (articles, papers, transcripts)
    ```
 
    If the repository structure list in `~/wiki/CLAUDE.md` lacks `llm_wiki/`, add one entry in its style: the folder is
-   the LLM-maintained wiki, and agents working there follow `llm_wiki/AGENTS.md`. Done when every path above exists and
+   the LLM-maintained wiki, and agents working there follow `llm_wiki/CLAUDE.md`. Done when every path above exists and
    the vault lists the folder.
 
 4. **Log it.** Append `## [YYYY-MM-DD] init | <wiki title>` to `log.md`, then tell the user the next move: run
    `wiki:ingest` with a URL, a file, or one of their vault notes.
 
-## Default schema for `AGENTS.md`
+## Default schema for `CLAUDE.md`
 
 Write these sections, filled in for the domain:
 
