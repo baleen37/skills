@@ -13,7 +13,8 @@ AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호
 
 | File | Description |
 | ---- | ----------- |
-| `package.json` | Project dependencies and scripts (commitizen, husky, semantic-release) |
+| `package.json` | Project dependencies and scripts (commitizen, semantic-release); `main` is the OpenCode plugin |
+| `index.js` | OpenCode plugin entrypoint registering the `core` and `wiki` skills |
 | `.releaserc.js` | Semantic-release configuration synchronizing marketplace.json and all plugin versions |
 | `CLAUDE.md` | Project guidance for AI coding agents (architecture, commands, guidelines) |
 | `README.md` | Project overview and documentation |
@@ -84,7 +85,6 @@ AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호
 - **Bun** - Runtime environment and package manager (>= 1.0.0)
 - **semantic-release** - Automated version management
 - **commitizen/commitlint** - Conventional Commits enforcement
-- **husky** - Git hooks management
 - **pre-commit** - Pre-commit hooks framework (Python-based)
 - **BATS** - Bash Automated Testing System
 
