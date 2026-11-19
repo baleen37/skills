@@ -25,18 +25,6 @@
       "version": "17.76.2"
     },
     {
-      "name": "superpower",
-      "description": "Core development workflow skills: brainstorming, spec and plan writing, code review, and subagent-driven execution (uses core for TDD and debugging)",
-      "source": "./plugins/superpower",
-      "category": "development",
-      "tags": [
-        "skills",
-        "collaboration",
-        "workflows"
-      ],
-      "version": "17.76.2"
-    },
-    {
       "name": "datadog",
       "description": "Datadog observability guidance via the pup CLI",
       "source": "./plugins/datadog",
@@ -74,6 +62,20 @@
         "jira",
         "twg",
         "cli"
+      ],
+      "version": "17.76.2"
+    },
+    {
+      "name": "wiki",
+      "description": "Karpathy's LLM Wiki pattern: an LLM-maintained, persistent markdown knowledge base",
+      "source": "./plugins/wiki",
+      "category": "development",
+      "tags": [
+        "wiki",
+        "llm-wiki",
+        "knowledge-base",
+        "obsidian",
+        "markdown"
       ],
       "version": "17.76.2"
     }

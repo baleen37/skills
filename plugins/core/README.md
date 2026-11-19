@@ -2,13 +2,11 @@
 
 Install `core` for development tools shared by Claude Code and Codex.
 It contains 38 skills: TDD and debugging, verification, review, PR creation,
-deployment, and independent engineering tools. Planning and execution flows
-live in the separate `superpower` plugin.
+deployment, and independent engineering tools.
 
 ## Default workflow
 
-`superpower:brainstorming` → `superpower:writing-plans` →
-`superpower:executing-plans` or `superpower:subagent-driven-development` →
+`core:grill-with-docs` → `core:to-spec` → `core:to-tickets` → `core:implement` →
 `core:verify` → `core:code-review` → `core:create-pr`.
 
 | Stage | Artifact | Skills |
@@ -43,7 +41,7 @@ prompt, permission, stop, and end events. They use the shared `hooks/` assets.
 
 See the root [installation migration](../../README.md#migrating-an-existing-installation)
 to remove the old `mattpocock-skills` and `me` packages and install
-`core`. The obra/superpowers workflow is the separate `superpower` plugin.
+`core`.
 Historical plans and designs keep their original names.
 [Upstream snapshots and MIT notices](upstream/README.md) are
 preserved separately from the live workflow.

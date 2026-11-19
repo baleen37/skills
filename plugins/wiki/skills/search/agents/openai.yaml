@@ -1,0 +1,3 @@
+interface:
+  display_name: "Wiki Search"
+  short_description: "Answer from the LLM wiki with citations"

@@ -1,0 +1,55 @@
+---
+name: init
+description: Create the LLM wiki inside the ~/wiki Obsidian vault (004_RESOURCE/LLM Wiki pages, 004_RESOURCE/raw sources).
+disable-model-invocation: true
+---
+
+# Create the LLM wiki
+
+The pattern is Karpathy's LLM Wiki, kept verbatim in [`references/llm-wiki.md`](references/llm-wiki.md). Read it first:
+every choice below instantiates it.
+
+The wiki lives inside the user's existing PARA vault at `~/wiki`. Read `~/wiki/CLAUDE.md` for the vault's rules; the
+wiki follows them and leaves every vault file outside its own folders untouched.
+
+## Steps
+
+1. **Check.** If `~/wiki/004_RESOURCE/LLM Wiki/index.md` already exists, stop: the wiki is set up. Otherwise ask the user
+   for the wiki's domain (research topic, book, team, personal).
+2. **Agree on the schema.** Propose the default schema below, adapted to the domain, and adjust it with the user: page
+   categories, frontmatter fields, ingest style (one source at a time with discussion, or batch). Done when the user
+   approves it.
+3. **Scaffold.** Create:
+
+   ```text
+   ~/wiki/004_RESOURCE/
+     raw/               # immutable external sources (articles, papers, transcripts)
+     LLM Wiki/
+       AGENTS.md        # the schema: single source of truth for every wiki skill
+       CLAUDE.md        # one line: @AGENTS.md
+       index.md         # catalog: one line per page, grouped by category
+       log.md           # append-only timeline
+   ```
+
+   Done when every path above exists.
+
+4. **Log it.** Append `## [YYYY-MM-DD] init | <wiki title>` to `log.md`, then tell the user the next move: run
+   `wiki:ingest` with a URL, a file, or one of their vault notes.
+
+## Default schema for `AGENTS.md`
+
+Write these sections, filled in for the domain:
+
+- **Purpose**: what the wiki tracks and for whom.
+- **Ownership**: the agent writes only inside `004_RESOURCE/LLM Wiki/`, adds new files to `004_RESOURCE/raw/`, and saves
+  images to `~/wiki/Attachments/`. Files in `raw/` are never edited after saving. Every other vault note (journal, inbox,
+  projects, areas, resources) is a read-only source: cite it with a `[[link]]`, never edit, move, or copy it.
+- **Page categories**: e.g. `sources/` (one summary per source), `entities/`, `concepts/`, `analyses/` (answers filed
+  back from `wiki:search`). Each category is a folder inside `LLM Wiki/`, created on first use.
+- **Page format**: YAML frontmatter (`type`, `sources`, `updated`). Every claim links its source; write no number, date,
+  or quote the source does not contain. When sources disagree, keep both claims under a `Disputed` note citing each.
+- **Links**: filename-only `[[wikilinks]]`, per the vault convention, so page filenames must be unique across the vault.
+- **index.md format**: `- [[page]] — one-line summary` under a heading per category.
+- **log.md format**: entries start `## [YYYY-MM-DD] <op> | <title>` where `<op>` is `init`, `ingest`, or `query`, so
+  `grep "^## \[" log.md | tail -5` shows recent activity.
+- **Workflows**: ingest and query preferences agreed in step 2. The user and agent revise this file as the wiki matures.
