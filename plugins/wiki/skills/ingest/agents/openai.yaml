@@ -1,0 +1,3 @@
+interface:
+  display_name: "Wiki Ingest"
+  short_description: "Integrate a source into the LLM wiki"

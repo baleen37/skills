@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wiki Init"
+  short_description: "Create a new LLM wiki"
+policy:
+  allow_implicit_invocation: false

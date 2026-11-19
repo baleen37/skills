@@ -1,0 +1,31 @@
+{
+  "name": "wiki",
+  "version": "17.76.2",
+  "description": "Karpathy's LLM Wiki pattern: an LLM-maintained, persistent markdown knowledge base",
+  "author": {
+    "name": "baleen37",
+    "email": "git@baleen.me"
+  },
+  "license": "MIT",
+  "keywords": [
+    "wiki",
+    "llm-wiki",
+    "knowledge-base",
+    "obsidian",
+    "markdown"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Wiki",
+    "shortDescription": "Karpathy's LLM Wiki pattern: an LLM-maintained, persistent markdown knowledge base",
+    "longDescription": "Karpathy's LLM Wiki pattern: an LLM-maintained, persistent markdown knowledge base",
+    "developerName": "baleen37",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills"
+    ],
+    "defaultPrompt": [
+      "Use Wiki for this task."
+    ]
+  }
+}

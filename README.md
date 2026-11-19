@@ -39,26 +39,23 @@ bun run sync:codex
 | Plugin | Purpose |
 | --- | --- |
 | `core` | TDD, debugging, verification, review, PRs, shipping, and engineering tools (38 skills) |
-| `superpower` | obra/superpowers workflow: brainstorming, plans, subagent-driven execution, code review (12 skills) |
 | `slack` | Slack message, thread, channel, and user search |
 | `atlassian` | Jira work guidance through `twg` |
 | `datadog` | Logs, monitors, APM, and metric investigation |
 | `autoresearch` | Automated experiment loop driven by metrics |
+| `wiki` | Karpathy's LLM Wiki pattern for an LLM-maintained markdown knowledge base |
 
 ## Default Development Flow
 
-`superpower:brainstorming` → `superpower:writing-plans` →
-`superpower:executing-plans` or `superpower:subagent-driven-development` →
+`core:grill-with-docs` → `core:to-spec` → `core:to-tickets` → `core:implement` →
 `core:verify` → `core:code-review` → `core:create-pr`.
-
-Install both `core` and `superpower` for the full flow.
 
 See the [core README](plugins/core/README.md) for all features and optional paths.
 
 ## Migrating an Existing Installation
 
 Once this unified version is released, remove the old `mattpocock-skills` and `me`
-plugins and install `core`. Also install `superpower` for the planning and execution flow. The old namespaces have no aliases.
+plugins and install `core`. The old namespaces have no aliases.
 The examples below assume the marketplace was registered as `bstack` with the `user` scope.
 If you installed it as `baleen-marketplace`, change the name; if you used another scope, adjust accordingly.
 
@@ -69,7 +66,6 @@ claude plugin uninstall mattpocock-skills@bstack --scope user --keep-data
 claude plugin uninstall me@bstack --scope user --keep-data
 claude plugin marketplace update bstack
 claude plugin install core@bstack --scope user
-claude plugin install superpower@bstack --scope user
 ```
 
 Codex:
@@ -79,11 +75,10 @@ codex plugin remove mattpocock-skills@bstack
 codex plugin remove me@bstack
 codex plugin marketplace upgrade bstack
 codex plugin add core@bstack
-codex plugin add superpower@bstack
 ```
 
 Skip the removal command for any old plugin you never installed. After updating, open a
-new session and confirm that `core:verify` and `superpower:writing-plans` are discovered. Past design and
+new session and confirm that `core:verify` and `core:to-spec` are discovered. Past design and
 plan documents are kept as historical records; update any in-progress plan to the current
 `core:` invocations before executing it.
 

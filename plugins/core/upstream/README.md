@@ -22,6 +22,3 @@ Matt's `implement-spec` flow skill is not packaged. Renamed skills:
 - `pr` → a `create-pr` reference
   (with [Humanlayer credits](../skills/create-pr/references/CREDITS.md))
 - upstream `code-review` is not packaged; references resolve to the local `core:code-review`
-
-obra/superpowers skills are not part of `core`; they ship as the separate
-[`superpower`](../../superpower/README.md) plugin.
