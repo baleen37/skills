@@ -56,9 +56,10 @@ git -C "$UP" show HEAD:<upstream-path> > /tmp/theirs
 git merge-file -p plugins/core/skills/<name>/<file> /tmp/base /tmp/theirs > /tmp/merged
 ```
 
-`diff /tmp/base plugins/core/...` shows core's adaptation; `diff /tmp/base /tmp/theirs` shows the upstream
-change. Keep adaptations: `/skill` and `"skill"` invocations rewritten to `core:skill`, renamed skills, and
-anything else the first diff shows. Resolve each conflict marker by hand and say why.
+`command diff /tmp/base plugins/core/...` shows core's adaptation; `command diff /tmp/base /tmp/theirs` shows the
+upstream change (`command` skips a shell alias such as `diff` → `difft`). Keep adaptations: `/skill` and
+`"skill"` invocations rewritten to `core:skill`, renamed skills, and anything else the first diff shows. Resolve
+each conflict marker by hand and say why.
 
 ## 5. Propose
 
