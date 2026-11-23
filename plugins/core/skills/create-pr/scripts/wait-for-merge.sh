@@ -25,6 +25,12 @@ while true; do
   comm -13 <(echo "$prev") <(echo "$cur")
   prev=$cur
 
+  # A merge cancels checks still running (e.g. CodeRabbit); state wins over buckets.
+  case $(gh pr view --json state --jq .state 2>/dev/null || echo "") in
+    MERGED) echo "MERGED: $URL"; exit 0;;
+    CLOSED) echo "CLOSED: $URL"; exit 1;;
+  esac
+
   if jq -e 'length>0 and all(.bucket!="pending")' <<<"$snap" >/dev/null 2>&1; then
     if jq -e 'any(.bucket=="fail" or .bucket=="cancel")' <<<"$snap" >/dev/null; then
       RUN_ID=$(jq -r '[.[] | select(.bucket=="fail" or .bucket=="cancel")] | .[0].link' <<<"$snap" \
