@@ -1,6 +1,6 @@
 {
   "name": "wiki",
-  "version": "17.79.3",
+  "version": "17.79.4",
   "description": "Karpathy's LLM Wiki pattern: an LLM-maintained, persistent markdown knowledge base",
   "author": {
     "name": "baleen37",
