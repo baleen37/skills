@@ -10,7 +10,6 @@ and bundles personal workflow automation, safer Git operations, session handoff,
 - LSP auto-installation: Bash, TypeScript, Python, Go, Kotlin, Lua, Nix, Terraform
 - Iterative development loop: PRD-driven automated improvement cycles
 - Personal skills: commit, review, research, PR creation, E2E verification
-- External integrations: Slack, Atlassian, Datadog
 
 ## Installation
 
@@ -53,7 +52,6 @@ bun run sync:codex
 | Plugin | Purpose |
 | --- | --- |
 | `core` | TDD, debugging, verification, review, PRs, shipping, and engineering tools (38 skills) |
-| `slack` | Slack message, thread, channel, and user search |
 | `wiki` | Karpathy's LLM Wiki pattern for an LLM-maintained markdown knowledge base |
 
 ## Default Development Flow
@@ -99,7 +97,7 @@ plan documents are kept as historical records; update any in-progress plan to th
 skills/
 ├── plugins/              # Plugin sources
 │   ├── core/             # Personal workflow plugin
-│   └── slack/            # Slack integration
+│   └── wiki/             # LLM wiki plugin
 ├── scripts/              # Sync and utility scripts
 ├── tests/                # BATS tests
 └── CLAUDE.md             # Project guidance for AI agents
