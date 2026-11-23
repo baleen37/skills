@@ -6,8 +6,7 @@
 
 skills - AI 코딩 어시스턴트 툴킷 (Claude Code, Codex)
 
-AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호, 개발 워크플로우 스킬(core), LLM 위키(wiki),
-외부 서비스 연동(atlassian, datadog), 자율 실험 루프(autoresearch) 등의 기능을 포함합니다.
+AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호, 개발 워크플로우 스킬(core), LLM 위키(wiki) 등의 기능을 포함합니다.
 
 ## Key Files
 
@@ -26,7 +25,7 @@ AI 보조 개발을 위한 도구들을 제공하며, Git 워크플로우 보호
 
 | Directory | Purpose |
 | --------- | ------- |
-| `plugins/` | Plugin sources, one subdirectory per plugin (`atlassian`, `autoresearch`, `core`, `datadog`, `wiki`); each holds `skills/`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` (`core` also has `agents/` and `hooks/`) |
+| `plugins/` | Plugin sources, one subdirectory per plugin (`core`, `wiki`); each holds `skills/`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` (`core` also has `agents/` and `hooks/`) |
 | `scripts/` | Maintenance scripts (Codex artifact sync/check, marketplace version sync, agent CLI pin updates, dispatch, harness audit) |
 | `.claude-plugin/` | Marketplace configuration (`marketplace.json`) listing all plugins |
 | `.github/` | GitHub Actions workflows and custom actions |

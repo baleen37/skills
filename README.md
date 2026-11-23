@@ -54,9 +54,6 @@ bun run sync:codex
 | --- | --- |
 | `core` | TDD, debugging, verification, review, PRs, shipping, and engineering tools (38 skills) |
 | `slack` | Slack message, thread, channel, and user search |
-| `atlassian` | Jira work guidance through `twg` |
-| `datadog` | Logs, monitors, APM, and metric investigation |
-| `autoresearch` | Automated experiment loop driven by metrics |
 | `wiki` | Karpathy's LLM Wiki pattern for an LLM-maintained markdown knowledge base |
 
 ## Default Development Flow
@@ -102,10 +99,7 @@ plan documents are kept as historical records; update any in-progress plan to th
 skills/
 ├── plugins/              # Plugin sources
 │   ├── core/             # Personal workflow plugin
-│   ├── slack/            # Slack integration
-│   ├── atlassian/        # Jira guidance through twg
-│   ├── datadog/          # Datadog integration
-│   └── autoresearch/     # Automated experiment loop
+│   └── slack/            # Slack integration
 ├── scripts/              # Sync and utility scripts
 ├── tests/                # BATS tests
 └── CLAUDE.md             # Project guidance for AI agents

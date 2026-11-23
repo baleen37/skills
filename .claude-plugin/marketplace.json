@@ -25,47 +25,6 @@
       "version": "17.79.3"
     },
     {
-      "name": "datadog",
-      "description": "Datadog observability guidance via the pup CLI",
-      "source": "./plugins/datadog",
-      "category": "development",
-      "tags": [
-        "datadog",
-        "observability",
-        "monitoring",
-        "logs",
-        "apm",
-        "pup"
-      ],
-      "version": "17.79.3"
-    },
-    {
-      "name": "autoresearch",
-      "description": "Autonomous experiment loop — iteratively optimize any metric with git-tracked experiments",
-      "source": "./plugins/autoresearch",
-      "category": "development",
-      "tags": [
-        "experiments",
-        "optimization",
-        "autonomous",
-        "research"
-      ],
-      "version": "17.79.3"
-    },
-    {
-      "name": "atlassian",
-      "description": "Jira work guidance via the official Atlassian twg CLI",
-      "source": "./plugins/atlassian",
-      "category": "development",
-      "tags": [
-        "atlassian",
-        "jira",
-        "twg",
-        "cli"
-      ],
-      "version": "17.79.3"
-    },
-    {
       "name": "wiki",
       "description": "Karpathy's LLM Wiki pattern: an LLM-maintained, persistent markdown knowledge base",
       "source": "./plugins/wiki",
