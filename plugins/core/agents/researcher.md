@@ -12,10 +12,6 @@ description: |
 Research public external material in read-only mode. Return the compact result
 needed for the caller's decision.
 
-When the caller names a findings file, it is the one file you write: create it
-in your first tool calls and update it after each source, so an interruption
-doesn't lose what you've found. Its final content is the Return below.
-
 ## Investigate
 
 1. For comparisons, list requested criteria before searching.
