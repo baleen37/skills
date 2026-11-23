@@ -99,6 +99,8 @@ case "$*" in
   "pr checks --json name,bucket,link")
     if [[ "${GH_CHECKS:-pass}" == "fail" ]]; then
       echo '[{"name":"CI","bucket":"fail","link":"https://example.test/actions/runs/9876543210/job/1"}]'
+    elif [[ "${GH_CHECKS:-pass}" == "pass-and-cancel" ]]; then
+      echo '[{"name":"CI","bucket":"pass","link":"https://example.test/actions/runs/1234567890"},{"name":"CodeRabbit","bucket":"cancel","link":""}]'
     elif [[ "${GH_CHECKS:-pass}" == "pending" ]]; then
       echo '[{"name":"CI","bucket":"pending","link":"https://example.test/actions/runs/1234567890"}]'
     elif [[ "${GH_CHECKS:-pass}" == "pending-then-fail" ]]; then
@@ -179,6 +181,26 @@ assert_log_excludes() {
   [[ "$output" == *"check: CI: pass"* ]]
   [[ "$output" == *"MERGED: https://example.test/pr/1"* ]]
   assert_log_excludes "gh pr merge"
+}
+
+@test "create-pr: wait-for-merge reports merged when a merge cancels a leftover check" {
+  local script="${BATS_TEST_DIRNAME}/../../plugins/core/skills/create-pr/scripts/wait-for-merge.sh"
+
+  run env GH_EXISTING_PR=open GH_AUTO_MERGE=true GH_MERGE_AFTER_FIRST_STATE=1 GH_CHECKS=pass-and-cancel "$script"
+
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"check: CodeRabbit: cancel"* ]]
+  [[ "$output" == *"MERGED: https://example.test/pr/1"* ]]
+  [[ "$output" != *"CI_FAILED"* ]]
+}
+
+@test "create-pr: wait-for-merge still reports a cancelled check on an open PR as CI failure" {
+  local script="${BATS_TEST_DIRNAME}/../../plugins/core/skills/create-pr/scripts/wait-for-merge.sh"
+
+  run env GH_EXISTING_PR=open GH_CHECKS=pass-and-cancel "$script"
+
+  [ "$status" -eq 1 ]
+  [[ "$output" == *"CI_FAILED: https://example.test/pr/1"* ]]
 }
 
 @test "create-pr: wait-for-merge stops on closed PR" {
