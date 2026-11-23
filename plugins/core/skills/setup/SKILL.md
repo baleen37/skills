@@ -44,7 +44,7 @@ Default posture: these skills were designed for GitHub. If a `git remote` points
 - **GitHub**: issues live in the repo's GitHub Issues (uses the `gh` CLI)
 - **GitLab**: issues live in the repo's GitLab Issues (uses the [`glab`](https://gitlab.com/gitlab-org/cli) CLI)
 - **Local markdown**: issues live as files under `.scratch/<feature>/` in this repo (good for solo projects or repos without a remote)
-- **Other** (Jira, Linear, etc.): ask the user to describe the workflow in one paragraph; the skill will record it as freeform prose
+- **Other** (Jira, Linear, etc.): ask the user to describe the workflow in one paragraph, including how to attach a file (an image or a video) to a comment, or that their tracker can't; the skill will record it as freeform prose
 
 Record the choice in `docs/agents/issue-tracker.md`. The GitHub and GitLab templates carry a "PRs as a request surface" flag, defaulted **off**. Leave it off and don't raise it: a user who wants external PRs in the triage queue can flip the flag in the file later.
 
@@ -105,7 +105,7 @@ Include the `### Triage labels` sub-block, and write `docs/agents/triage-labels.
 
 When Section B ran on GitHub or GitLab, create each configured label the tracker lacks (`gh label create` / `glab label create`).
 
-Then write the docs files using the seed templates in this skill folder as a starting point:
+Then write the docs files by copying the seed templates in this skill folder word for word, changing only what the user's answers fill in:
 
 - [issue-tracker-github.md](./issue-tracker-github.md): GitHub issue tracker
 - [issue-tracker-gitlab.md](./issue-tracker-gitlab.md): GitLab issue tracker
@@ -113,7 +113,7 @@ Then write the docs files using the seed templates in this skill folder as a sta
 - [triage-labels.md](./triage-labels.md): label mapping (only if `triage` is installed)
 - [domain.md](./domain.md): domain doc consumer rules + layout
 
-For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
+For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description. Give it the same `## When a skill says "..."` sections as the templates, including "attach a file to a comment"; where the tracker can't attach, that section says so, and a skill hands the user the file's path instead.
 
 ### 5. Done
 

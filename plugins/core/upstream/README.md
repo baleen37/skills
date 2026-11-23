@@ -22,3 +22,10 @@ Matt's `implement-spec` flow skill is not packaged. Renamed skills:
 - `pr` → a `create-pr` reference
   (with [Humanlayer credits](../skills/create-pr/references/CREDITS.md))
 - upstream `code-review` is not packaged; references resolve to the local `core:code-review`
+
+Unmerged upstream PRs applied ahead of the snapshot:
+
+- [#1355](https://github.com/mattpocock/skills/pull/1355): `glab ... --output json`, seed templates copied word for word
+- [#1428](https://github.com/mattpocock/skills/pull/1428): "attach a file to a comment" tracker operation
+- [#1354](https://github.com/mattpocock/skills/pull/1354): `research` findings file created first and updated after
+  each source; in core the `core:researcher` agent writes it, to a path the caller picks
