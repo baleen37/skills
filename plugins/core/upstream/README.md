@@ -6,7 +6,7 @@ instructions. Upstream URLs and license notices remain unchanged.
 
 | Source | Snapshot | Preserved notices |
 | --- | --- | --- |
-| [mattpocock/skills](https://github.com/mattpocock/skills/tree/4ae2317) | `4ae2317` (2026-10-31) | [README](mattpocock-skills/README.md), [metadata](mattpocock-skills/metadata.json), [MIT license](mattpocock-skills/LICENSE) |
+| [mattpocock/skills](https://github.com/mattpocock/skills/tree/6f7f783) | `6f7f783` (2026-11-25) | [README](mattpocock-skills/README.md), [metadata](mattpocock-skills/metadata.json), [MIT license](mattpocock-skills/LICENSE) |
 
 ## Local adaptations
 
