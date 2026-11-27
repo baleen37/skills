@@ -22,7 +22,7 @@
         "memory",
         "context"
       ],
-      "version": "17.79.5"
+      "version": "17.79.6"
     },
     {
       "name": "wiki",
@@ -36,7 +36,7 @@
         "obsidian",
         "markdown"
       ],
-      "version": "17.79.5"
+      "version": "17.79.6"
     }
   ]
 }
