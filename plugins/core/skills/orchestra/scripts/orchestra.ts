@@ -101,17 +101,13 @@ if (id === "clean") {
 }
 if (!/^[A-Za-z0-9_-]+$/.test(id)) fail(`invalid task id: ${id}\n${USAGE}`);
 
-const FALLBACK_MODEL = "gpt-6.1-sol";
 const TIMEOUT_MS = Number(process.env.ORCHESTRA_TIMEOUT_MS) || 30 * 60 * 1000;
 let effort = "low";
 let model = "gpt-6.2-sol";
-let modelChosen = false;
 for (let i = 1; i < args.length; i += 2) {
   if (args[i] === "--effort" && args[i + 1]) effort = args[i + 1];
-  else if (args[i] === "--model" && args[i + 1]) {
-    model = args[i + 1];
-    modelChosen = true;
-  } else fail(USAGE);
+  else if (args[i] === "--model" && args[i + 1]) model = args[i + 1];
+  else fail(USAGE);
 }
 
 const prompt = readFileSync(0, "utf8").trim();
@@ -125,66 +121,49 @@ const threadFile = join(dir, `${id}.thread`);
 writeFileSync(schema, JSON.stringify(SCHEMA));
 rmSync(result, { force: true }); // never report a stale result from an earlier run
 
-function runCodex() {
-  // Same task id means the same teammate: continue its thread.
-  const thread = existsSync(threadFile) ? readFileSync(threadFile, "utf8").trim() : "";
-  const codexArgs = [
-    "exec",
-    ...(thread ? ["resume", thread] : []),
-    "-m", model,
-    "-c", `model_reasoning_effort=${effort}`,
-    "--json",
-    "--dangerously-bypass-approvals-and-sandbox",
-    "--output-schema", schema,
-    "-o", result,
-    "-",
-  ];
-
-  const jsonlStart = sizeOf(jsonl);
-  const logStart = sizeOf(log);
-  const out = openSync(jsonl, "a");
-  const err = openSync(log, "a");
-  const run = spawnSync("codex", codexArgs, {
-    input: prompt + FOOTER,
-    stdio: ["pipe", out, err],
-    timeout: TIMEOUT_MS, // a hung worker must still end with a recorded failure
-  });
-  closeSync(out);
-  closeSync(err);
-
-  const newEvents = events(readFrom(jsonl, jsonlStart));
-  const started = newEvents.find((e) => e.type === "thread.started")?.thread_id;
-  if (started) writeFileSync(threadFile, started);
-  const usage = newEvents.filter((e) => e.type === "turn.completed").at(-1)?.usage;
-  const errors = [
-    ...new Set(
-      newEvents
-        .filter((e) => e.type === "turn.failed" || e.type === "error")
-        .map((e) => e.error?.message || e.message || e.type),
-    ),
-  ];
-  return {
-    run,
-    usage,
-    errors,
-    threadId: started || thread || "-",
-    completed: usage !== undefined,
-    logTail: readFrom(log, logStart).trim().split("\n").slice(-20).join("\n"),
-  };
-}
+// Same task id means the same teammate: continue its thread.
+const thread = existsSync(threadFile) ? readFileSync(threadFile, "utf8").trim() : "";
+const codexArgs = [
+  "exec",
+  ...(thread ? ["resume", thread] : []),
+  "-m", model,
+  "-c", `model_reasoning_effort=${effort}`,
+  "--json",
+  "--dangerously-bypass-approvals-and-sandbox",
+  "--output-schema", schema,
+  "-o", result,
+  "-",
+];
 
 const startedAt = Date.now();
-const priorThread = existsSync(threadFile) ? readFileSync(threadFile, "utf8") : "";
-let attempt = runCodex();
-// gpt-6.2-sol is preferred; when the account rejects it, retry once on the fallback,
-// in the teammate's existing thread if it has one, otherwise in a fresh thread.
-if (!modelChosen && attempt.errors.some((m) => /model.*(not supported|does not exist)/i.test(m))) {
-  model = FALLBACK_MODEL;
-  if (priorThread) writeFileSync(threadFile, priorThread);
-  else rmSync(threadFile, { force: true });
-  attempt = runCodex();
-}
-const { run, usage, errors, threadId, completed, logTail } = attempt;
+const jsonlStart = sizeOf(jsonl);
+const logStart = sizeOf(log);
+const out = openSync(jsonl, "a");
+const err = openSync(log, "a");
+const run = spawnSync("codex", codexArgs, {
+  input: prompt + FOOTER,
+  stdio: ["pipe", out, err],
+  timeout: TIMEOUT_MS, // a hung worker must still end with a recorded failure
+});
+closeSync(out);
+closeSync(err);
+
+const newEvents = events(readFrom(jsonl, jsonlStart));
+const usage = newEvents.filter((e) => e.type === "turn.completed").at(-1)?.usage;
+const completed = usage !== undefined;
+const started = newEvents.find((e) => e.type === "thread.started")?.thread_id;
+// Keep a thread only once it has completed a turn, so a run that dies at startup
+// (e.g. a rejected model) never replaces the teammate's working thread.
+if (started && completed) writeFileSync(threadFile, started);
+const threadId = started || thread || "-";
+const errors = [
+  ...new Set(
+    newEvents
+      .filter((e) => e.type === "turn.failed" || e.type === "error")
+      .map((e) => e.error?.message || e.message || e.type),
+  ),
+];
+const logTail = readFrom(log, logStart).trim().split("\n").slice(-20).join("\n");
 
 let parsed: Record<string, any> | undefined;
 if (sizeOf(result) > 0) {
