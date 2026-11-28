@@ -23,7 +23,7 @@ while [ $# -gt 0 ]; do
     [ "$1" = "-o" ] && out="$2"
     shift
 done
-if [ "$FAKE_MODE" = reject ] && grep -q "gpt-6.2-sol" "$FAKE_ARGS"; then
+if [ "$FAKE_MODE" = reject ]; then
     echo '{"type":"thread.started","thread_id":"th-bad"}'
     echo '{"type":"error","message":"The gpt-6.2-sol model is not supported"}'
     exit 1
@@ -103,21 +103,6 @@ EOF
     [[ "$output" == *"prompt is empty"* ]]
 }
 
-@test "orchestra: falls back to gpt-6.1-sol in a fresh thread when the default model is rejected" {
-    FAKE_MODE=reject run bun "$SCRIPT" T1 <<< "fix it"
-
-    [ "$status" -eq 0 ]
-    [[ "${lines[0]}" == "T1 done thread=th-1 model=gpt-6.1-sol "* ]]
-    grep -q "^exec -m gpt-6.1-sol" "$FAKE_ARGS"
-}
-
-@test "orchestra: an explicit --model is not swapped for the fallback" {
-    FAKE_MODE=reject run bun "$SCRIPT" T1 --model gpt-6.2-sol <<< "fix it"
-
-    [ "$status" -eq 1 ]
-    [[ "${lines[0]}" == "T1 failed thread=th-bad model=gpt-6.2-sol "* ]]
-}
-
 @test "orchestra: lists files the worker created, which diff --stat skips" {
     echo 'x' > a.ts
     run bun "$SCRIPT" T1 <<< "fix it"
@@ -141,10 +126,19 @@ EOF
     [[ "$output" == *"ETIMEDOUT"* ]]
 }
 
-@test "orchestra: model fallback keeps an existing teammate's thread" {
+@test "orchestra: a rejected model fails at once and records no thread for a new task" {
+    FAKE_MODE=reject run bun "$SCRIPT" T1 <<< "fix it"
+
+    [ "$status" -eq 1 ]
+    [[ "${lines[0]}" == "T1 failed thread=th-bad model=gpt-6.2-sol "* ]]
+    [[ "$output" == *"error: The gpt-6.2-sol model is not supported"* ]]
+    [ ! -e "$(work)/T1.thread" ]
+}
+
+@test "orchestra: a failed run keeps the teammate's working thread" {
     bun "$SCRIPT" T1 <<< "fix it"
     FAKE_MODE=reject run bun "$SCRIPT" T1 <<< "again"
 
-    [ "$status" -eq 0 ]
-    grep -q "^exec resume th-1 -m gpt-6.1-sol" "$FAKE_ARGS"
+    [ "$status" -eq 1 ]
+    [ "$(cat "$(work)/T1.thread")" = "th-1" ]
 }

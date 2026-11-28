@@ -21,8 +21,8 @@ EOF
 
 - Run it with Bash `run_in_background` and wait for the completion notice, then read the task output. It is a few lines.
 - Output: `T1 done thread=<id> model=gpt-6.2-sol effort=low time=95s tokens=100kin/1kout`, then `{"status","summary","files_touched","blockers"}`, then `git diff --stat` for the touched files and a ` new: <path>` line per file Codex created. Anything other than `done` also prints the errors and the last log lines, and exits 1.
-- Codex runs with `gpt-6.2-sol`, full access (no sandbox, no approvals). Start from a clean `git status` so any change can be reverted. If the account rejects `gpt-6.2-sol`, the helper retries once on `gpt-6.1-sol` by itself.
-- Effort is `low` by default; it handles most well-specified tasks. Pass `--effort medium` for an unclear bug or a change across many files, or after a `low` run fails. `--effort high` only after `medium` fails.
+- Codex runs with `gpt-6.2-sol`, full access (no sandbox, no approvals). Start from a clean `git status` so any change can be reverted. If the account rejects the model, the run fails at once: report it to the user, and do not retry or switch models. Pass `--model <name>` only when the user names a different model.
+- Effort is `low` by default; it handles most well-specified tasks. Pass `--effort medium` for an unclear bug or a change across many files, or after a `low` run's work falls short. `--effort high` only after `medium` falls short. Errors that are not about the work (model rejected, timeout) are never fixed by more effort.
 - Run teammates in parallel only when their tasks touch different files. Otherwise one at a time.
 
 ## Write the task
