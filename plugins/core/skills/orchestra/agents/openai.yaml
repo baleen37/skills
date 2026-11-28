@@ -1,0 +1,5 @@
+interface:
+  display_name: "Orchestra"
+  short_description: "Claude Code only: delegate tasks to Codex CLI. Not for use inside Codex."
+policy:
+  allow_implicit_invocation: false
